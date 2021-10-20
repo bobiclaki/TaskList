@@ -90,7 +90,14 @@ function deleteTask(id) {
 
 // *
 
-socket.on('task:done', taskID => document.getElementById(taskID).classList.add('done'))
+socket.on('task:done', taskID => {
+    let main = document.getElementById(taskID);
+    let done = document.createElement('div')
+    done.className = `done`;
+    done.textContent = `Выполнено`;
+    main.querySelector('.menu').remove()
+    main.prepend(done)
+})
 
 socket.on('task:update', newTask => {
     document.getElementById(newTask.id).querySelector('.content').textContent = newTask.content;
