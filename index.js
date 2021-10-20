@@ -2,30 +2,15 @@ const express = require('express');
 const app = express();
 const { Server } = require('socket.io');
 const path = require('path');
-const http = require('http');
-const bodyParser = require('body-parser');
 
 const PORT = process.argv[2] ? process.argv[2] : 1002;
 
 let Tasks = []
-/* { content: '', date: Date.now() } */
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-})
-
 
 app.use('/', express.static(path.join(__dirname, '/tasks')))
 app.use('/edit', express.static(path.join(__dirname, '/edit')))
 
-const server = http.createServer(app).listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`TASK LIST: http://localhost:${PORT}`);
 })
 
