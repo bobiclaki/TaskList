@@ -3,7 +3,7 @@ const app = express();
 const { Server } = require('socket.io');
 const path = require('path');
 
-const PORT = process.argv[2] ? process.argv[2] : 1002;
+const PORT = process.env.PORT || 1002;
 
 let Tasks = []
 
