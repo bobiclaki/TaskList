@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List - Edit</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="title">Текст задачи</div>
+
+    <input class="task-input" type="text">
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        document.querySelector('.task-input').addEventListener('keyup', event => {
+            if (event.keyCode === 13 && event.target.value.trim() !== '') {
+                socket.emit('task:create', event.target.value);
+                event.target.value = '';
+            }
+        })
+    </script>
+
+</body>
+</html>
