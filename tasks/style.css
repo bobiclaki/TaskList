@@ -21,6 +21,15 @@ input, textarea {
     border: none;
 }
 
+.bar input {
+    margin: 8px;
+    padding: 0 12px;
+    width: calc(100% - 24px - 16px);
+    height: 32px;
+    color: #e8e8e8;
+    background: #1e1e21;
+}
+
 .tasks {
     display: grid;
     padding: 16px;
@@ -28,11 +37,42 @@ input, textarea {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.tasks li {
+.tasks .task {
     margin: 4px 8px;
-    padding: 8px;
+    padding: 12px;
     word-break: break-all;
     background: #151518;
+}
+
+.tasks .task .done {
+    margin: 0 0 4px 0;
+    color: #4fc553;
+    font-size: 12px;
+}
+
+.tasks .task .menu {
+    display: flex;
+    margin: 0 0 4px 0;
+    font-size: 14px;
+    align-items: center;
+    justify-content: flex-end;
+}
+.tasks .task .menu li {
+    cursor: pointer;
+    margin: 0 4px;
+}
+.tasks .task .menu li.check { color: #7579ff; }
+.tasks .task .menu li.edit { color: #4fc553; }
+.tasks .task .menu li.delete { color: #ff6d6d; }
+
+.tasks .task .content {
+    font-size: 14px;
+}
+
+.tasks .task .date {
+    margin: 4px 0 0 0;
+    color: #a5a5a5;
+    font-size: 12px;
 }
 
 @media (max-width: 540px) {
